@@ -33,6 +33,6 @@ node app
 https://github.com/00014812WIUT/MoneyTracker.git
 
 #### Link to application on Glitch
-https://lateral-cerulean-mole.glitch.me/
+https://enchanting-tidal-octagon.glitch.me/
 
 
