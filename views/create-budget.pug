@@ -1,0 +1,41 @@
+extends layout.pug
+
+block content
+    div.container
+        h2= 'Create a Monthly Budget'
+
+        if budget
+            form.form#budget-edit-form(data-id= budget.id)
+                label Budget Name
+                    div#name-error
+                input.input#name(type="text", name="name" value= budget.name required)
+
+                label Amount
+                    div#amount-error
+                input.input#amount(type="number", name="amount", value= budget.amount required)
+
+                label Start Date
+                    div#startDate-error
+                input.input#startDate(type="date", name="startDate" value= budget.startDate required)
+
+                button.btn.btn--primary Update Budget
+
+            script(src="/budget/update.js")
+
+        else
+            form.form#budget-add-form()
+                label Budget Name
+                    div#name-error
+                input.input#name(type="text", name="name" required)
+
+                label Amount
+                    div#amount-error
+                input.input#amount(type="number", name="amount" required)
+
+                label Start Date
+                    div#startDate-error
+                input.input#startDate(type="date", name="startDate" required)
+
+                button.btn.btn--primary Create a Budget
+
+            script(src="/budget/create.js")

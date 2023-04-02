@@ -1,0 +1,46 @@
+extends layout.pug
+
+block content
+    div.container
+        h2 Budgets
+        if !budgetInfo
+            a.btn.btn--primary(href='/budgets/create') Create a new budget
+            p Take control of your expenses and save more money with budgets!
+        else
+            section.stats
+                div.stat
+                    p.stat__info Originally Budgeted
+                    p.stat__money.plus #{budgetInfo.originallyBudgeted}
+                div.stat
+                    p.stat__info Spent so far
+                    p.stat__money.minus #{budgetInfo.spent}
+                div.stat
+                    if budgetInfo.isPositive
+                        p.stat__info Money left
+                        p.stat__money.plus #{budgetInfo.moneyLeft}
+                    else
+                        p.stat__info Money Overspent
+                        p.stat__money.minus #{budgetInfo.moneyLeft}
+                div.stat
+                    p.stat__info You can spend
+                    p.stat__money #{budgetInfo.perDay} USD/DAY
+
+            div.budget
+                h3.budget__header Budget Progress
+
+                div.budget__content
+                    if budgetInfo.isPositive
+                        p Keep spending. You can spend #{budgetInfo.perDay} USD each day for the rest of the period.
+                        p Spent #{budgetInfo.spent} USD (#{budgetInfo.spentPercent}%)
+                        div#myProgress
+                            div#myBar(style=`width: ${budgetInfo.spentPercent}%`) #{budgetInfo.spentPercent}%
+                    else
+                        p Budget has been exceeded by #{budgetInfo.spent} USD.
+                        div#myProgress
+                            div#myBar(style=`width: 100%; background-color: red`) #{budgetInfo.spentPercent}%
+
+                    div.period
+                        p #{budgetInfo.startDate}
+                        p #{budgetInfo.finishDate}
+
+            a.btn.btn--primary(href=`/budgets/update/${budgetInfo.id}`) Edit Budget

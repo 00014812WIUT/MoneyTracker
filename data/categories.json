@@ -1,0 +1,100 @@
+[
+  {
+    "id": 1,
+    "name": "Salary",
+    "type": "income",
+    "url" : "https://api.spendee.com/categories/cat_28.svg",
+    "color": "rgb(24, 178, 114)"
+  },
+  {
+    "id": 2,
+    "name": "Business",
+    "type": "income",
+    "url" : "https://api.spendee.com/categories/cat_27.svg",
+    "color": "rgb(255, 162, 0)"
+  },
+  {
+    "id": 3,
+    "name": "Gifts",
+    "type": "income",
+    "url" : "https://api.spendee.com/categories/cat_26.svg",
+    "color": "rgb(24, 178, 114)"
+  },
+  {
+    "id": 4,
+    "name": "Extra Income",
+    "type": "income",
+    "url" : "https://api.spendee.com/categories/cat_5.svg",
+    "color": "rgb(114, 197, 65)"
+  },
+  {
+    "id": 5,
+    "name": "Other",
+    "type": "income",
+    "url" : "https://api.spendee.com/categories/cat_12.svg",
+    "color": "rgb(103, 104, 108)"
+  },
+  {
+    "id": 6,
+    "name": "Food & Drink",
+    "type": "expense",
+    "url" : "https://api.spendee.com/categories/cat_3.svg",
+    "color": "rgb(255, 168, 1)"
+  },
+  {
+    "id": 7,
+    "name": "Shopping",
+    "type": "expense",
+    "url" : "https://api.spendee.com/categories/cat_9.svg",
+    "color": "rgb(227, 106, 239)"
+  },
+  {
+    "id": 8,
+    "name": "Transport",
+    "type": "expense",
+    "url" : "https://api.spendee.com/categories/cat_14.svg",
+    "color": "rgb(252, 206, 0)"
+  },
+  {
+    "id": 9,
+    "name": "Home",
+    "type": "expense",
+    "url" : "https://api.spendee.com/categories/cat_7.svg",
+    "color": "rgb(182, 152, 92)"
+  },
+  {
+    "id": 10,
+    "name": "Bills & Fees",
+    "type": "expense",
+    "url" : "https://api.spendee.com/categories/cat_5.svg",
+    "color": "rgb(94, 196, 172)"
+  },
+  {
+    "id": 11,
+    "name": "Entertainment",
+    "type": "expense",
+    "url" : "https://api.spendee.com/categories/cat_6.svg",
+    "color": "rgb(255, 168, 1)"
+  },
+  {
+    "id": 12,
+    "name": "Family & Personal",
+    "type": "expense",
+    "url" : "https://api.spendee.com/categories/cat_4.svg",
+    "color": "rgb(69, 167, 230)"
+  },
+  {
+    "id": 13,
+    "name": "Education",
+    "type": "expense",
+    "url" : "https://api.spendee.com/categories/cat_19.svg",
+    "color": "rgb(58, 117, 173)"
+  },
+  {
+    "id": 14,
+    "name": "Other",
+    "type": "expense",
+    "url" : "https://api.spendee.com/categories/cat_12.svg",
+    "color": "rgb(103, 104, 108)"
+  }
+]

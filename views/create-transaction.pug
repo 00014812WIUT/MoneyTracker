@@ -1,0 +1,147 @@
+extends layout.pug
+
+block content
+    div.container
+        h2= 'Add new Transaction'
+
+        if transaction
+
+            form.form#update-form(data-id= transaction.id)
+                label Type
+                select.input#parent(name="type")
+                    if transaction.type == 'income'
+                        option(value='income', selected) Income
+                        option(value= 'expense') Expense
+                    else
+                        option(value='income') Income
+                        option(value= 'expense', selected) Expense
+
+                label Category
+                select.input#child(name="category")
+                    each category in categories
+                        if transaction.categoryId == category.id
+                            option(value= category.id, selected) #{ category.name }
+                        else
+                            option(value= category.id) #{ category.name }
+
+                label Date
+                input.input(type="date", name="date", value=transaction.date, required)
+
+                label Note
+                input.input(type="text", name="note", value=transaction.note, required)
+
+                label Amount
+                    div#amount-error
+                input.input#amount(type="number", name="amount", value=transaction.amount, required)
+
+                button.btn.btn--primary#update-record Update transaction
+
+        else
+            form.form#transaction-add-form(action="/transactions/create", method="POST")
+                label Type
+                select.input#parent(name="type")
+                    option(value= 'income') Income
+                    option(value= 'expense') Expense
+
+                label Category
+                select.input#child(name="category")
+                    each category in categories
+                        option(value= category.id) #{ category.name }
+
+                label Date
+                input.input(type="date", name="date" required)
+
+                label Note
+                input.input(type="text", name="note" required)
+
+                label Amount
+                    div#amount-error
+                input.input#amount(type="number", name="amount" required)
+
+                button.btn.btn--primary Add transaction
+
+    script.
+        let transactionAddForm = document.getElementById('transaction-add-form');
+        transactionAddForm.addEventListener('submit', e => {
+            const amount = document.getElementById('amount').value
+
+            if(amount < 0){
+                const amountErr = document.getElementById('amount-error')
+                amountErr.classList.add("alert", "alert-danger");
+                amountErr.textContent = "Please enter a positive amount."
+                // window.alert("Please enter a positive amount.")
+                e.preventDefault()
+            }
+        })
+
+
+    script.
+        const type = document.querySelector('#parent');
+        const category = document.querySelector('#child');
+
+        fetch(`/api/v1/categories`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        .then(res => res.json())
+        .then(data => {
+            return data
+        })
+
+        type.onchange = (e) => {
+            e.preventDefault();
+
+            let typeValue = type.selectedOptions[0].value
+            if (typeValue == 'income') {
+                // remove all selected option
+                let index = category.options.length;
+                while (index--) {
+                    category.remove(index);
+                }
+
+                fetch(`/api/v1/categories/income`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then(res => res.json())
+                .then(data => {
+
+                    for (let cta in data){
+                        console.log(cta)
+                        // create a new option
+                        const option = new Option(data[cta].name, data[cta].id);
+                        // add it to the list
+                        category.add(option, undefined);
+                    }
+                })
+
+            } else {
+                // remove all selected option
+                let index = category.options.length;
+                while (index--) {
+                   category.remove(index);
+                }
+
+                fetch(`/api/v1/categories/expense`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                })
+                .then(res => res.json())
+                .then(data => {
+
+                    for (let cta in data) {
+                        console.log(cta)
+                        // create a new option
+                        const option = new Option(data[cta].name, data[cta].id);
+                        // add it to the list
+                        category.add(option, undefined);
+                    }
+                })
+            }
+        };

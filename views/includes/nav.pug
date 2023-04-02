@@ -1,0 +1,34 @@
+nav.nav
+    if title == 'Home'
+        a.nav__brand(href='/' style='border-bottom: 3px solid white') Money Tracker
+    else
+        a.nav__brand(href='/') Money Tracker
+
+    ul.list.nav__list
+        if title == 'Transaction'
+            li.nav__item(style='border-bottom: 3px solid white')
+                a(href='/transactions') Transactions
+        else
+            li.nav__item
+                a(href='/transactions') Transactions
+
+        if title == 'Budget'
+            li.nav__item(style='border-bottom: 3px solid white')
+                a(href='/budgets') Budget
+        else
+            li.nav__item
+                a(href='/budgets') Budget
+
+        if title == 'Wallet'
+            li.nav__item(style='border-bottom: 3px solid white')
+                a(href='/wallets') Wallet
+        else
+            li.nav__item
+                a(href='/wallets') Wallet
+
+        if title == 'Settings'
+            li.nav__item(style='border-bottom: 3px solid white')
+                a(href='/settings') Settings
+        else
+            li.nav__item
+                a(href='/settings') Settings

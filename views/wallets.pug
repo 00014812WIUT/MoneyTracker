@@ -1,0 +1,42 @@
+extends layout.pug
+
+block content
+    div.container
+        h2 Wallets
+        if !walletInfo
+            a.btn.btn--primary(href='/wallets/create') Create a new wallet
+        else
+            section.stats
+                div.stat
+                    p.stat__info Current Wallet Balance
+                    if statInfo.isBalancePositive
+                        p.stat__money.plus #{statInfo.walletBalance}
+                    else
+                        p.stat__money.minus #{statInfo.walletBalance}
+                div.stat
+                    p.stat__info Total Period Change
+                    if statInfo.isPeriodPositive
+                        p.stat__money.plus #{statInfo.periodChange}
+                    else
+                        p.stat__money.minus #{statInfo.periodChange}
+                div.stat
+                    p.stat__info Total Period Expenses
+                    p.stat__money.minus #{statInfo.periodExpense}
+                div.stat
+                    p.stat__info Total Period Income
+                    p.stat__money.plus #{statInfo.periodIncomes}
+
+
+            div.card.card--primary
+                header.card__header
+                    img.card__icon(src='/images/wallet.png')
+                    p #{walletInfo.name}
+                div.card__body
+                    span
+                        img.card__icon(src='/images/owner.png')
+                        p #{walletInfo.owner}
+                    span
+                        img.card__icon(src='/images/dollars.png')
+                        p.stat__money.plus #{walletInfo.balance}
+
+                    a.btn.btn--primary(href=`/wallets/update/${walletInfo.id}`) Edit Wallet

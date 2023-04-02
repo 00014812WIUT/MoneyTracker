@@ -1,0 +1,43 @@
+extends layout.pug
+
+block content
+    div.container
+        h2= 'Create a Wallet'
+
+        if wallet
+            //action=`/wallets/update/${wallet.id}`, method="POST"
+            form.form#wallet-edit-form(data-id= wallet.id)
+                label Wallet Name
+                    div#name-error
+                input.input#name(type="text", name="name" value= wallet.name required)
+
+                label Initial balance
+                    div#balance-error
+                input.input#balance(type="number", name="balance", value= wallet.balance required)
+
+                label Owner name
+                    div#owner-error
+                input.input#owner(type="text", name="owner" value= wallet.owner required)
+
+                button.btn.btn--primary Update Wallet
+
+            script(src="/wallet/update.js")
+
+        else
+            //                        /wallets/create
+            form.form#wallet-add-form()
+                label Wallet Name
+                    div#name-error
+                input.input#name(type="text", name="name" required)
+
+                label Initial balance
+                    div#balance-error
+                input.input#balance(type="number", name="balance" required)
+
+                label Owner name
+                    div#owner-error
+                input.input#owner(type="text", name="owner" required)
+
+                button.btn.btn--primary Create a Wallet
+
+            script(src="/wallet/create.js")

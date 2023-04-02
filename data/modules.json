@@ -1,0 +1,16 @@
+[
+    {
+        "moduleId": 1,
+        "title": "Database Management System"
+    },
+
+    {
+        "moduleId": 2,
+        "title": "Fundamentals of Programming"
+    },
+
+    {
+        "moduleId": 3,
+        "title": "Software Design Principles"
+    }
+]
